@@ -1,56 +1,60 @@
 import java.util.Scanner;
 
-/**
- * Created by MUSAB on 25.9.2016.
- */
-
 public class Ogrenci {
 
-    static String[][] dersler=new String[5][6];
-  //  static String[] adi=new String[5];
-    static Scanner giris=new Scanner(System.in);
+     public String[][] dersler=new String[5][5];
+     Scanner giris=new Scanner(System.in);
 
-    static int sayac=0;
+    public String isim;
+     int sayac=0;
 
-    public static void IslemYap(){
+    public void IslemYap() {
 
-        System.out.println("Ders Ekle----- 1\nDers Sil------ 2\nDersler Gör--- 3");
-        System.out.print("Seçiminiz: ");
+        if (!dersler[0][0].isEmpty() || !dersler[0][1].isEmpty() || !dersler[0][2].isEmpty() || !dersler[0][3].isEmpty() || !dersler[0][4].isEmpty()) {
 
-        int secim=giris.nextInt();
+            System.out.print("Adınızı giriniz:");
+            isim = giris.next();
 
-        switch (secim){
-            case 1:
-                DersEkle();
-                break;
-            case 2:
-                DersSil();
-                break;
-            case 3:
-                DersleriGoruntule();
-                break;
-            default :
-                System.out.println("Lütfen Geçerli bir seçim yapınız...!!!");
-                IslemYap();
-                break;
+            for (int i = 0; i < 5; i++) {
+
+                if (dersler[0][i].equals(isim)) {
+
+                    System.out.println("Ders Ekle----- 1\nDers Sil------ 2\nDersler Gör--- 3\nAna Menü------ 4");
+                    System.out.print("Seçiminiz: ");
+
+                    int secim = giris.nextInt();
+
+                    switch (secim) {
+                        case 1:
+                            DersEkle();
+                            break;
+                        case 2:
+                            DersSil();
+                            break;
+                        case 3:
+                            DersleriGoruntule();
+                            break;
+                        case 4:
+                            Admin admin =new Admin();
+                            admin.sorgula();
+                        default:
+                            System.out.println("Lütfen Geçerli bir seçim yapınız...!!!");
+                            IslemYap();
+                            break;
+                    }
+                }
+            }
+            System.out.print("Kayıtlı isim bulunamadı...!!!");
+        }
+        else{
+            System.out.print("");
         }
     }
+    public void DersEkle(){
 
-    public static void DersEkle(){
-
-        System.out.println("");
-
-        /*
-           İSİMLERİ AKTAR
-        for(int i=0;i<5;i++)
-            dersler[i][0]=
-
-        */
-
-
-        //Adminden eklenen ogrenciler ile giriste isim yazılan ogrenciler
+     // giriste isim yazılan ogrenciler dizideki ismi bulmak için
         for(int i=0;i<5;i++) {
-            if (dersler[i][0].equals(adi[i])){
+            if (dersler[0][i].equals(isim)){
                 sayac=i;
                 break;
             }
@@ -101,7 +105,7 @@ public class Ogrenci {
         IslemYap();
     }
 
-    public static void DersSil(){
+    public void DersSil(){
 
      /*   System.out.print("silinecek dersi girin:");
         String dersSil=giris.nextLine();
@@ -123,31 +127,83 @@ public class Ogrenci {
 */
     }
 
-    public static void DersleriGoruntule(){
+    public void DersleriGoruntule(){
 
         /*dersler dizisinden verileri çek*/
-        for(int i=0;i<5;i++) {
+      /*  for(int i=0;i<5;i++) {
             if (dersler[i][0].equals(adi[i])){
                 sayac=i;
                 break;
             }
-        }
+        }*/
 
         System.out.println("Alınan Dersler");
             for(int j=0;j<6;j++)
-               System.out.println(dersler[sayac][j]);
+                System.out.println(dersler[sayac][j]);
 
     }
+
+
+    /*ısimCek fonsiyonunu MAİN DE KULLAN*/
+    public void IsimCek(){
+        Admin admin=new Admin();
+        for(int i=0;i<5;i++)
+            dersler[0][i]=admin.ogrenciler[0][i];
+    }
+
 
     public static void main(String[] args){
 
+        Admin admin=new Admin();
+        admin.sorgula();
 
-
-       /* for (int i=0;i<5;i++)
-            adi[i]=giris.nextLine();
-        */
-
-       IslemYap();
 
     }
 }
+
+
+ /* public  void GirisSecim(){
+
+        System.out.println("Admin---- 1\nÖğrenci-- 2");
+        System.out.print("Seçiminiz:");
+        int sec1=giris.nextInt();
+
+        switch (sec1){
+            case 1:
+                System.out.print("Sifre giriniz: ");
+                String girilen=giris.next();
+                if(!girilen.equals("admin")) {
+                    System.out.println("Yanlış şifre !!!");
+                    GirisSecim();
+                }
+                else {
+                    System.out.print("Öğrenci Ekle---------- 1\nÖğrenci Sil----------- 2\nÖğrencileri Görüntüle- 3\n");
+                    System.out.print("Seçiminiz:");
+                    int sec2=giris.nextInt();
+                    switch (sec2){
+                        case 1:
+                        //    OgrenciEkle();
+                            break;
+                        case 2:
+                        //    OgrenciSil();
+                            break;
+                        case 3:
+                         //   OgrenciGoruntule();
+                            break;
+                        default:
+                            System.out.println("Lütfen Geçerli bir seçim yapınız...!!!");
+                            break;
+                    }
+                }
+                break;
+            case 2:
+                IslemYap();
+                break;
+            default:
+                System.out.println("Geçerli seçim yapınız!!!");
+                GirisSecim();
+                break;
+        }
+    }
+
+*/
