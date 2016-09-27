@@ -10,48 +10,46 @@ public class Ogrenci {
      int sayac=0;
 
 
-
-    public void IslemYap() {
-
-
-
-            System.out.print("Adınızı giriniz:");
-            isim = giris.next();
-
-            for (int i = 0; i < 5; i++) {
-
-                if (dersler[0][i].equals(isim)) {
-
-                    System.out.println("Ders Ekle----- 1\nDers Sil------ 2\nDersler Gör--- 3\nAna Menü------ 4");
-                    System.out.print("Seçiminiz: ");
-
-                    int secim = giris.nextInt();
-
-                    switch (secim) {
-                        case 1:
-                            DersEkle();
-                            break;
-                        case 2:
-                            DersSil();
-                            break;
-                        case 3:
-                            DersleriGoruntule();
-                            break;
-                        case 4:
-                           sorgula();
-                        default:
-                            System.out.println("Lütfen Geçerli bir seçim yapınız...!!!\n");
-                            IslemYap();
-                            break;
-                    }
-                }
+    void Dogrula(){
+        System.out.print("Adınızı giriniz:");
+        isim = giris.next();
+        for (int i = 0; i < 5; i++) {
+            if (dersler[0][i].equals(isim)) {
+                IslemYap();
             }
-        System.out.print("Kayıtlı isim bulunamadı...!!!");
-        IslemYap();
+        }
+        System.out.print("Kayıtlı isim bulunamadı...!!!\n");
+        Dogrula();
+    }
+
+    void IslemYap() {
+
+        System.out.println("Ders Ekle------ 1\nDers Sil------- 2\nDersleri Gör--- 3\nAna Menü------- 4");
+        System.out.print("Seçiminiz: ");
+        int secim = giris.nextInt();
+
+        switch (secim) {
+
+            case 1:
+                DersEkle();
+                break;
+            case 2:
+                DersSil();
+                break;
+            case 3:
+                DersleriGoruntule();
+                break;
+            case 4:
+                sorgula();
+            default:
+                System.out.println("Lütfen Geçerli bir seçim yapınız...!!!\n");
+                IslemYap();
+                break;
+        }
     }
 
 
-    public void DersEkle(){
+    void DersEkle(){
 
      // giriste isim yazılan ogrenciler dizideki ismi bulmak için
         for(int i=0;i<5;i++) {
@@ -61,44 +59,40 @@ public class Ogrenci {
             }
         }
 
-        System.out.println("dersleri giriniz");
+        System.out.println(isim+" dersleri giriniz..");
         if(sayac==0){
-            for(int i=0;i<5;i++) {
-                System.out.print(i+1 +".ders:");
-                dersler[sayac][i] = giris.nextLine();
-                System.out.print("\n");
+            for(int i=1;i<5;i++) {
+                System.out.print(i +".ders:");
+                dersler[sayac][i] = giris.next();
+
             }
         }
 
         else if(sayac==1){
-            for(int i=0;i<5;i++) {
-                System.out.print(i+1 +".ders:");
-                dersler[sayac][i] = giris.nextLine();
-                System.out.print("\n");
+            for(int i=1;i<5;i++) {
+                System.out.print(i +".ders:");
+                dersler[sayac][i] = giris.next();
             }
         }
 
         else if(sayac==2){
-            for(int i=0;i<5;i++) {
-                System.out.print(i+1 +".ders:");
-                dersler[sayac][i] = giris.nextLine();
-                System.out.print("\n");
+            for(int i=1;i<5;i++) {
+                System.out.print(i +".ders:");
+                dersler[sayac][i] = giris.next();
             }
         }
 
         else if(sayac==3){
-            for(int i=0;i<5;i++) {
-                System.out.print(i+1 +".ders:");
-                dersler[sayac][i] = giris.nextLine();
-                System.out.print("\n");
+            for(int i=1;i<5;i++) {
+                System.out.print(i +".ders:");
+                dersler[sayac][i] = giris.next();
             }
         }
 
         else if(sayac==4){
-            for(int i=0;i<5;i++) {
-                System.out.print(i+1 +".ders:");
-                dersler[sayac][i] = giris.nextLine();
-                System.out.print("\n");
+            for(int i=1;i<5;i++) {
+                System.out.print(i +".ders:");
+                dersler[sayac][i] = giris.next();
             }
         }
 
@@ -106,7 +100,7 @@ public class Ogrenci {
         IslemYap();
     }
 
-    public void DersSil(){
+    void DersSil(){
 
      /*   System.out.print("silinecek dersi girin:");
         String dersSil=giris.nextLine();
@@ -128,33 +122,29 @@ public class Ogrenci {
 */
     }
 
-    public void DersleriGoruntule(){
+    void DersleriGoruntule(){
 
         /*dersler dizisinden verileri çek*/
-      /*  for(int i=0;i<5;i++) {
-            if (dersler[i][0].equals(adi[i])){
+        for(int i=0;i<5;i++) {
+            if (dersler[i][0].equals(isim)){
                 sayac=i;
                 break;
             }
-        }*/
+        }
 
-        System.out.println("Alınan Dersler");
-            for(int j=0;j<6;j++)
+        System.out.println(isim.toUpperCase()+" Aldığın Dersler");
+            for(int j=1;j<5;j++)
                 System.out.println(dersler[sayac][j]);
 
+        sayac=0;
+        IslemYap();
     }
 
-
-    /*ısimCek fonsiyonunu MAİN DE KULLAN*/
-    public void IsimCek(){
-
-        for(int i=0;i<5;i++)
-            dersler[0][i]=ogrenciler[0][i];
-    }
+        /*↓↓↓↓↓   ADMİN FONKSİYONLARI  ↓↓↓↓↓*/
 
 
 
-    public  void sorgula() {
+    void sorgula() {
         Scanner input = new Scanner(System.in);
         System.out.println("Admin islemleri icin 1,ogrenci islemleri icin 2 giriniz:");
         int sayi = input.nextInt();
@@ -171,12 +161,11 @@ public class Ogrenci {
         }
 
         if (sayi == 2) {
-
-           IslemYap();
+          Dogrula();
         }
 
     }
-    public void adminisl() {
+    void adminisl() {
 
         Scanner islem = new Scanner(System.in);
         System.out.print("ogrenci ekle: (1) " + "\n" + "ogrenci sil: (2)" + "\n" + "ogrenci listele: (3)\nAna Menü: (4)");
@@ -198,7 +187,7 @@ public class Ogrenci {
             sorgula();
     }
 
-    public  void ogrenciekle() {
+    void ogrenciekle() {
 
 
         Scanner ekle = new Scanner(System.in);
@@ -214,7 +203,7 @@ public class Ogrenci {
         }
 
         for(int i=0;i<5;i++)
-            dersler[0][i]=ogrenciler[0][i];
+            dersler[i][0]=ogrenciler[0][i];
 
 
         adminisl();
@@ -228,7 +217,6 @@ public class Ogrenci {
 
         Ogrenci ogrenci=new Ogrenci();
         ogrenci.sorgula();
-
 
     }
 }
