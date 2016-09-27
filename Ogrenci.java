@@ -3,14 +3,17 @@ import java.util.Scanner;
 public class Ogrenci {
 
      public String[][] dersler=new String[5][5];
+    public String[][] ogrenciler = new String[2][5];
      Scanner giris=new Scanner(System.in);
 
     public String isim;
      int sayac=0;
 
+
+
     public void IslemYap() {
 
-        if (!dersler[0][0].isEmpty() || !dersler[0][1].isEmpty() || !dersler[0][2].isEmpty() || !dersler[0][3].isEmpty() || !dersler[0][4].isEmpty()) {
+
 
             System.out.print("Adınızı giriniz:");
             isim = giris.next();
@@ -35,8 +38,7 @@ public class Ogrenci {
                             DersleriGoruntule();
                             break;
                         case 4:
-                            Admin admin =new Admin();
-                            admin.sorgula();
+                           sorgula();
                         default:
                             System.out.println("Lütfen Geçerli bir seçim yapınız...!!!");
                             IslemYap();
@@ -44,12 +46,11 @@ public class Ogrenci {
                     }
                 }
             }
-            System.out.print("Kayıtlı isim bulunamadı...!!!");
-        }
-        else{
-            System.out.print("");
-        }
+        System.out.print("Kayıtlı isim bulunamadı...!!!");
+        IslemYap();
     }
+
+
     public void DersEkle(){
 
      // giriste isim yazılan ogrenciler dizideki ismi bulmak için
@@ -146,16 +147,84 @@ public class Ogrenci {
 
     /*ısimCek fonsiyonunu MAİN DE KULLAN*/
     public void IsimCek(){
-        Admin admin=new Admin();
+
         for(int i=0;i<5;i++)
-            dersler[0][i]=admin.ogrenciler[0][i];
+            dersler[0][i]=ogrenciler[0][i];
     }
 
 
+
+    public  void sorgula() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Admin islemleri icin 1,ogrenci islemleri icin 2 giriniz:");
+        int sayi = input.nextInt();
+
+        if (sayi == 1) {
+            System.out.println("Sifre giriniz: ");
+            String girilen=input.next();
+            if (girilen.equals("12345")) {
+                adminisl();
+            } else {
+                System.out.println("Şifre yanlış girildi yeniden giriniz...");
+                sorgula();
+            }
+        }
+
+        if (sayi == 2) {
+            Ogrenci ogrenci=new Ogrenci();
+            ogrenci.IslemYap();
+        }
+
+    }
+    public void adminisl() {
+
+        Scanner islem = new Scanner(System.in);
+        System.out.print("ogrenci ekle: (1) " + "\n" + "ogrenci sil: (2)" + "\n" + "ogrenci listele: (3)\nAna Menü: (4)");
+        int sayi1 = islem.nextInt();
+
+        if (sayi1 == 1) {
+
+            ogrenciekle();
+
+        } else if (sayi1 == 2) {
+
+            // ogrencisil();
+        } else if (sayi1 == 3) {
+
+            //    ogrencilistele();
+        }
+        else if(sayi1==4)
+            sorgula();
+    }
+
+    public  void ogrenciekle() {
+
+
+        Scanner ekle = new Scanner(System.in);
+
+        for(int j=0;j<5;j++) {
+
+            System.out.print("Kişi ismi: ");
+            ogrenciler[0][j]=ekle.next();
+            dersler[0][j]=ogrenciler[0][j];
+            System.out.print("Numara: ");
+            ogrenciler[1][j]=ekle.next();
+
+        }
+
+        for(int i=0;i<5;i++)
+
+
+        adminisl();
+
+
+
+    }
+
     public static void main(String[] args){
 
-        Admin admin=new Admin();
-        admin.sorgula();
+        Ogrenci ogrenci=new Ogrenci();
+        ogrenci.sorgula();
 
 
     }
