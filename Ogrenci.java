@@ -13,16 +13,25 @@ public class Ogrenci {
     void Dogrula(){
         System.out.print("Adınızı giriniz:");
         isim = giris.next();
-        for (int i = 0; i < 5; i++) {
+        int say=0;
+        while(!dersler[say][0].equals(isim))
+        {
+            say++;
+        }
+
+        if(dersler[say][0].equals(isim))
+            IslemYap();
+
+
+        /*for (int i = 0; i < 5; i++) {
             if (dersler[0][i].equals(isim)) {
                 IslemYap();
+
             }
-        }
-        System.out.print("Kayıtlı isim bulunamadı...!!!\n");
-        Dogrula();
+        }*/
     }
 
-    void IslemYap() {
+    void IslemYap(){
 
         System.out.println("Ders Ekle------ 1\nDers Sil------- 2\nDersleri Gör--- 3\nAna Menü------- 4");
         System.out.print("Seçiminiz: ");
@@ -41,10 +50,12 @@ public class Ogrenci {
                 break;
             case 4:
                 sorgula();
+                break;
             default:
                 System.out.println("Lütfen Geçerli bir seçim yapınız...!!!\n");
                 IslemYap();
                 break;
+
         }
     }
 
@@ -102,24 +113,27 @@ public class Ogrenci {
 
     void DersSil(){
 
-     /*   System.out.print("silinecek dersi girin:");
-        String dersSil=giris.nextLine();
-
-        for(int i=0;i<5;i++){
-            if(!(b[i].equals(ders)))
-                System.out.print("Lütfen geçerli ders giriniz.");
-        }
-        ders=scan.nextLine();
-        for (int i=0;i<5;i++) {
-            if (b[i].equals(ders))
-                b[i]="";
-
-            if(b[i].isEmpty()){
-                System.out.print("ders ekleyiniz:");
-                b[i]=scan.nextLine();
+        System.out.print("silinecek dersi girin:");
+        String dersSil=giris.next();
+        for(int i=0;i<5;i++) {
+            if (dersler[i][0].equals(isim)){
+                sayac=i;
+                break;
             }
         }
-*/
+
+        for (int i=0;i<5;i++) {
+            if (dersler[sayac][i].equals(dersSil))
+                dersler[sayac][i]="";
+
+            if(dersler[sayac][i].isEmpty()){
+                System.out.print("Silinen dersin yerine ders ekleyiniz:");
+                dersler[sayac][i]=giris.next();
+            }
+        }
+
+        sayac=0;
+        IslemYap();
     }
 
     void DersleriGoruntule(){
@@ -149,21 +163,28 @@ public class Ogrenci {
         System.out.println("Admin islemleri icin 1,ogrenci islemleri icin 2 giriniz:");
         int sayi = input.nextInt();
 
-        if (sayi == 1) {
-            System.out.println("Sifre giriniz: ");
-            String girilen=input.next();
-            if (girilen.equals("12345")) {
-                adminisl();
-            } else {
-                System.out.println("Şifre yanlış girildi yeniden giriniz...");
+        switch (sayi){
+            case 1:
+
+                System.out.println("Sifre giriniz: ");
+                String girilen=input.next();
+
+                if (girilen.equals("12345")) {
+                        adminisl();
+                }
+                else {
+                    System.out.println("Şifre yanlış girildi yeniden giriniz...");
+                    sorgula();
+                }
+                break;
+            case 2:
+                Dogrula();
+                break;
+            default:
+                System.out.print("Lütfen geçerli seçim yapınız...");
                 sorgula();
-            }
+                break;
         }
-
-        if (sayi == 2) {
-          Dogrula();
-        }
-
     }
     void adminisl() {
 
