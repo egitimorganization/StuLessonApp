@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class Ogrenci {
 
-     public String[][] dersler=new String[5][5];
-    public String[][] ogrenciler = new String[2][5];
+     String[][] dersler=new String[5][5];
+     String[][] ogrenciler = new String[2][5];
      Scanner giris=new Scanner(System.in);
 
-    public String isim;
+     String isim;
      int sayac=0;
 
 
@@ -40,7 +40,7 @@ public class Ogrenci {
                         case 4:
                            sorgula();
                         default:
-                            System.out.println("Lütfen Geçerli bir seçim yapınız...!!!");
+                            System.out.println("Lütfen Geçerli bir seçim yapınız...!!!\n");
                             IslemYap();
                             break;
                     }
@@ -171,8 +171,8 @@ public class Ogrenci {
         }
 
         if (sayi == 2) {
-            Ogrenci ogrenci=new Ogrenci();
-            ogrenci.IslemYap();
+
+           IslemYap();
         }
 
     }
@@ -190,6 +190,7 @@ public class Ogrenci {
 
             // ogrencisil();
         } else if (sayi1 == 3) {
+
 
             //    ogrencilistele();
         }
@@ -213,6 +214,7 @@ public class Ogrenci {
         }
 
         for(int i=0;i<5;i++)
+            dersler[0][i]=ogrenciler[0][i];
 
 
         adminisl();
@@ -220,6 +222,7 @@ public class Ogrenci {
 
 
     }
+
 
     public static void main(String[] args){
 
