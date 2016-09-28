@@ -72,7 +72,7 @@ public class Ogrenci {
 
      // giriste isim yazılan ogrenciler dizideki ismi bulmak için
         for(int i=0;i<5;i++) {
-            if (dersler[0][i].equals(isim)){
+            if (dersler[i][0].equals(isim)){
                 sayac=i;
                 break;
             }
@@ -121,24 +121,31 @@ public class Ogrenci {
 
     void DersSil(){
 
-        System.out.print("silinecek dersi girin:");
-        String dersSil=giris.next();
+
         for(int i=0;i<5;i++) {
             if (dersler[i][0].equals(isim)){
                 sayac=i;
                 break;
             }
         }
+        if(dersler[sayac][1]!=null) {
+            System.out.print("silinecek dersi girin:");
+            String dersSil = giris.next();
+            for (int i = 1; i < 5; i++) {
+                if (dersler[sayac][i].equals(dersSil))
+                    dersler[sayac][i] = "";
 
-        for (int i=1;i<5;i++) {
-            if (dersler[sayac][i].equals(dersSil))
-                dersler[sayac][i]="";
-
-            if(dersler[sayac][i].isEmpty()){
-                System.out.print("Silinen dersin yerine ders ekleyiniz:");
-                dersler[sayac][i]=giris.next();
+                if (dersler[sayac][i].isEmpty()) {
+                    System.out.print("Silinen dersin yerine ders ekleyiniz:");
+                    dersler[sayac][i] = giris.next();
+                }
             }
         }
+        else {
+            System.out.println("Lütfen önce ders giriniz...");
+            IslemYap();
+        }
+
 
         sayac=0;
         IslemYap();
@@ -225,7 +232,6 @@ public class Ogrenci {
 
             System.out.print("Kişi ismi: ");
             ogrenciler[0][j]=ekle.next();
-            dersler[0][j]=ogrenciler[0][j];
             System.out.print("Numara: ");
             ogrenciler[1][j]=ekle.next();
 
