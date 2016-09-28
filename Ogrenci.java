@@ -17,10 +17,18 @@ public class Ogrenci {
         while(!dersler[say][0].equals(isim))
         {
             say++;
+            if(say==5){
+                say--;
+                break;
+            }
         }
 
         if(dersler[say][0].equals(isim))
             IslemYap();
+        else {
+            System.out.println("Geçerli isim girmediniz.Tekrar deneyiniz...");
+            Dogrula();
+        }
 
 
         /*for (int i = 0; i < 5; i++) {
@@ -122,7 +130,7 @@ public class Ogrenci {
             }
         }
 
-        for (int i=0;i<5;i++) {
+        for (int i=1;i<5;i++) {
             if (dersler[sayac][i].equals(dersSil))
                 dersler[sayac][i]="";
 
@@ -241,50 +249,3 @@ public class Ogrenci {
 
     }
 }
-
-
- /* public  void GirisSecim(){
-
-        System.out.println("Admin---- 1\nÖğrenci-- 2");
-        System.out.print("Seçiminiz:");
-        int sec1=giris.nextInt();
-
-        switch (sec1){
-            case 1:
-                System.out.print("Sifre giriniz: ");
-                String girilen=giris.next();
-                if(!girilen.equals("admin")) {
-                    System.out.println("Yanlış şifre !!!");
-                    GirisSecim();
-                }
-                else {
-                    System.out.print("Öğrenci Ekle---------- 1\nÖğrenci Sil----------- 2\nÖğrencileri Görüntüle- 3\n");
-                    System.out.print("Seçiminiz:");
-                    int sec2=giris.nextInt();
-                    switch (sec2){
-                        case 1:
-                        //    OgrenciEkle();
-                            break;
-                        case 2:
-                        //    OgrenciSil();
-                            break;
-                        case 3:
-                         //   OgrenciGoruntule();
-                            break;
-                        default:
-                            System.out.println("Lütfen Geçerli bir seçim yapınız...!!!");
-                            break;
-                    }
-                }
-                break;
-            case 2:
-                IslemYap();
-                break;
-            default:
-                System.out.println("Geçerli seçim yapınız!!!");
-                GirisSecim();
-                break;
-        }
-    }
-
-*/
