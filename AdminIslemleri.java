@@ -50,16 +50,29 @@ public class AdminIslemleri {
         System.out.print("Öğrenci Ekle----- 1 " + "\n" + "Öğrenci sil------ 2" + "\n" +
                 "Öğrenci Listele-- 3" + "\n" + "Ana Menü--------- 4");
         System.out.print("\nSeçiminiz:");
-        int sayi1 = islem.nextInt();
-
-        if (sayi1 == 1) {
-            ogrenciEkle();
-        } else if (sayi1 == 2) {
-            ogrenciSil();
-        } else if (sayi1 == 3) {
-            ogrenciListele();
-        } else if (sayi1 == 4) {
-            sorgula();
+        try {
+            int sayi1 = islem.nextInt();
+            switch (sayi1){
+                case 1:
+                    ogrenciEkle();
+                    break;
+                case 2:
+                    ogrenciSil();
+                    break;
+                case 3:
+                    ogrenciListele();
+                    break;
+                case 4:
+                    sorgula();
+                    break;
+                default:
+                    System.out.print("1 ile 4 arasında sayı giriniz.\n" );
+                    adminIslem();
+                    break;
+            }
+        }catch (InputMismatchException i){
+            System.out.print("1 ile 4 arasında sayı giriniz.\n");
+            adminIslem();
         }
     }
 
