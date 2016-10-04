@@ -13,6 +13,7 @@ public class OgrenciIslemleri {
     int sayac = 0;
 
     AdminIslemleri adminIslemleri=new AdminIslemleri();
+
     void dogrula(){
 
         if(ogrenciBilgileri.dersler[0][0]!=null||ogrenciBilgileri.dersler[1][0]!=null||ogrenciBilgileri.dersler[2][0]!=null||
@@ -39,18 +40,18 @@ public class OgrenciIslemleri {
             System.out.println("Sistemde kayıtlı öğrenci yoktur.");
             adminIslemleri.sorgula();
         }
-
     }
 
     void islemYap(){
 
 
-            System.out.println("Ders Ekle------ 1\nDers Sil------- 2\nDersleri Gör--- 3\nAna Menü------- 4");
-            System.out.print("Seçiminiz: ");
+        System.out.println("Ders Ekle------ 1\nDers Sil------- 2\nDersleri Gör--- 3\nAna Menü------- 4");
+        System.out.print("Seçiminiz: ");
+
+        try {
+
             int secim = giris.nextInt();
-
             switch (secim) {
-
                 case 1:
                     dersEkle();
                     break;
@@ -65,10 +66,15 @@ public class OgrenciIslemleri {
                     adminIslemleri.sorgula();
                     break;
                 default:
-                    System.out.println("Lütfen Geçerli bir seçim yapınız...!!!\n");
+                    System.out.println("1 ile 4 arasında sayı giriniz...\n");
                     islemYap();
                     break;
             }
+        }catch (InputMismatchException i){
+            System.out.print("1 ile 4 arasında sayı giriniz...");
+            islemYap();
+        }
+
     }
 
     void dersEkle(){
