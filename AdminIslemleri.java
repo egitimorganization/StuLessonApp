@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -10,27 +11,37 @@ public class AdminIslemleri {
     void sorgula() {
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Admin islemleri--- 1\nogrenci islemleri--2");
+        System.out.println("Admin işlemleri---- 1\nÖğrenci işlemleri-- 2");
         System.out.print("Seçiminiz:");
-        int sayi = input.nextInt();
 
-        if (sayi == 1) {
-            System.out.print("Sifre giriniz: ");
-            String girilen = input.next();
-            if (girilen.equals("12345")) {
-                adminIslem();
-            } else {
-                System.out.println("Şifre yanlış girildi yeniden giriniz...");
-                sorgula();
+        try {
+            int sayi = input.nextInt();
+
+            switch (sayi){
+                case 1:
+                    System.out.print("Sifre giriniz: ");
+                    String girilen = input.next();
+                    if (girilen.equals("12345")) {
+                        adminIslem();
+                    } else {
+                        System.out.println("Şifre yanlış girildi yeniden giriniz...");
+                        sorgula();
+                    }
+                    break;
+                case 2:
+                    OgrenciIslemleri ogrenciIslemleri=new OgrenciIslemleri();
+                    ogrenciIslemleri.dogrula();
+                    break;
+                default:
+                    System.out.print("Yalnızca 1 ve 2 yi seçebilirsiniz.\n");
+                    sorgula();
+                    break;
             }
-        }
-        if (sayi == 2) {
-            OgrenciIslemleri ogrenciIslemleri=new OgrenciIslemleri();
-            ogrenciIslemleri.dogrula();
-        } else {
-            System.out.print("Lütfen geçerli seçim yapınız...");
+        }catch (InputMismatchException ime){
+            System.out.print("Lütfen geçerli seçim yapınız...\n");
             sorgula();
         }
+
     }
 
     void adminIslem() {
