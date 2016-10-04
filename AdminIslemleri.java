@@ -12,7 +12,7 @@ public class AdminIslemleri {
 
         Scanner input = new Scanner(System.in);
         System.out.println("Admin işlemleri---- 1\nÖğrenci işlemleri-- 2");
-        System.out.print("Seçiminiz:");
+        System.out.print("Seçiminiz: ");
 
         try {
             int sayi = input.nextInt();
@@ -33,12 +33,12 @@ public class AdminIslemleri {
                     ogrenciIslemleri.dogrula();
                     break;
                 default:
-                    System.out.print("Yalnızca 1 ve 2 yi seçebilirsiniz.\n");
+                    System.out.print("\nYalnızca 1 ve 2 yi seçebilirsiniz.\n");
                     sorgula();
                     break;
             }
         }catch (InputMismatchException ime){
-            System.out.print("Lütfen geçerli seçim yapınız...\n");
+            System.out.println("\nLütfen geçerli seçim yapınız...");
             sorgula();
         }
 

@@ -46,7 +46,7 @@ public class OgrenciIslemleri {
 
 
         System.out.println("Ders Ekle------ 1\nDers Sil------- 2\nDersleri Gör--- 3\nAna Menü------- 4");
-        System.out.print("Seçiminiz: ");
+        System.out.print("Seçiminiz: \n");
 
         try {
 
