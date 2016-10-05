@@ -21,18 +21,20 @@ public class OgrenciIslemleri {
 
             System.out.print("Adınızı giriniz:");
             isim = giris.next();
-            int say = 0;
 
+            int say=0;
             for(int i=0;i<5;i++){
-                if(ogrenciBilgileri.dersler[say][0].equals(isim)) {
+                if(ogrenciBilgileri.dersler[i][0].equals(isim)) {
                     say = i;
                     break;
                 }
             }
 
-            if (ogrenciBilgileri.dersler[say][0].equals(isim))
+            if (ogrenciBilgileri.dersler[say][0].equals(isim)) {
                 islemYap();
+            }
             else {
+
                 System.out.println("Geçerli isim girmediniz.Tekrar deneyiniz...");
                 dogrula();
             }
@@ -41,7 +43,7 @@ public class OgrenciIslemleri {
             adminIslemleri.sorgula();
         }
     }
-
+    
     void islemYap(){
 
 
@@ -62,6 +64,7 @@ public class OgrenciIslemleri {
                     dersleriGoruntule();
                     break;
                 case 4:
+                    //ogrenci();
                     AdminIslemleri adminIslemleri = new AdminIslemleri();
                     adminIslemleri.sorgula();
                     break;
