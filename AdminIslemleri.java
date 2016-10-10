@@ -68,7 +68,7 @@ public class AdminIslemleri {
                     break;
                 default:
                     System.out.print("1 ile 4 arasında sayı giriniz.\n" );
-                    adminIslem();
+                   adminIslem();
                     break;
             }
         }catch (InputMismatchException i){

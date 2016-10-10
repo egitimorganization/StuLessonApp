@@ -8,45 +8,41 @@ import java.util.Scanner;
  */
 public class Ogrenci {
 
-
-    static List<String> list=new ArrayList(5);
+    static List<String> list=new ArrayList();
 
     AdminIslemleri admin=new AdminIslemleri();
 
     Ders ders;
 
-    void ogrenciEkle() {
+    public void ogrenciEkle() {
 
         Scanner ekle = new Scanner(System.in);
-
         if(list.size()<5) {
+
             System.out.print("Öğrenci Adı: ");
             String ad = ekle.next();
             list.add(ad);
             System.out.println("Ekleme basarili...\n");
-
-        }
-        else
+        }else
             System.out.println("Ogrenci kontenjanı dolu.");
 
         admin.adminIslem();
-
     }
 
-    void ogrenciSil() {
+    public void ogrenciSil() {
+
         ders=new Ders();
         Scanner sil = new Scanner(System.in);
         System.out.print("Silinecek Öğrenci adı:");
         String silad=sil.next();
 
-        for(int i=0;i<list.size();i++) {
-            if (list.get(i).equals(silad)) {
-                list.remove(silad);
-                ders.dersler.remove(i);
-                System.out.println("Silme basarili...");
-                break;
-            }
-        }
+        int silid=list.indexOf(silad);
+        list.remove(silad);
+        try {
+            if(!ders.dersler.get(silid).isEmpty())
+                ders.dersler.remove(silid);
+        }catch (IndexOutOfBoundsException i){}
+
         if(list.isEmpty()){
             System.out.println("Liste boş.Önce ekleme yapın...");
         }
@@ -54,7 +50,7 @@ public class Ogrenci {
         admin.adminIslem();
     }
 
-    void ogrenciListele() {
+    public void ogrenciListele() {
         ders=new Ders();
         Scanner kisino=new Scanner(System.in);
         if(!list.isEmpty()){
