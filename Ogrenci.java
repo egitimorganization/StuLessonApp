@@ -5,18 +5,18 @@ public class Ogrenci {
 
     @Getter
     @Setter
-    private String ogrencino;
+    private static String ogrencino;
     @Getter
     @Setter
-    private String ogrenciAdi;
+    private static String ogrenciadi;
     @Getter
     @Setter
-    private String ogrenciSoyadi;
+    private static String ogrencisoyadi;
     @Getter
     @Setter
-    private String ogrencisinif;
+    private static String ogrencisinif;
     @Getter
     @Setter
-    private String ogrencibolum;
+    private static String ogrencibolum;
 
 }

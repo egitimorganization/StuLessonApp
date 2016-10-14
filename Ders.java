@@ -5,20 +5,20 @@ public class Ders {
 
     @Setter
     @Getter
-    private String derskodu;
+    private static String derskodu;
     @Getter
     @Setter
-    private String dersadi;
+    private static String dersadi;
     @Setter
     @Getter
-    private String hocaadi;
+    private static String hocaadi;
     @Getter
     @Setter
-    private String hocasoyadi;
+    private static String hocasoyadi;
     @Getter
     @Setter
-    private String derssube;
+    private static String derssube;
     @Getter
     @Setter
-    private String derskredi;
+    private static String derskredi;
 }

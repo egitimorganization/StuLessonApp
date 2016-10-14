@@ -14,14 +14,14 @@ public class OgrenciIslemleri {
 
        ogrenci=new Ogrenci();
 
-        if(!ogrenci.getOgrenciAdi().isEmpty()) {
+        if(ogrenci.getOgrenciadi()!=null) {
 
             System.out.print("Öğrenci No:");
             String ogrno=giris.next();
             System.out.print("Adınızı Giriniz:");
             String ad = giris.next();
 
-            if(ogrenci.getOgrencino().equals(ogrno) && ogrenci.getOgrenciAdi().equals(ad)){
+            if(ogrenci.getOgrencino().equals(ogrno) && ogrenci.getOgrenciadi().equals(ad)){
                 islemYap();
             }
             else {
@@ -73,51 +73,53 @@ public class OgrenciIslemleri {
         ders=new Ders();
 
         System.out.print("Ders Kodu:");
-        String derskodu=giris.next();
-        ders.setDerskodu(derskodu);
+        ders.setDerskodu(giris.next());
 
         System.out.print("Ders Adı:");
-        String dersadi=giris.next();
-        ders.setDersadi(dersadi);
+        ders.setDersadi(giris.next());
 
         System.out.print("Hoca Adı:");
-        String dershocaad=giris.next();
-        ders.setHocaadi(dershocaad);
+        ders.setHocaadi(giris.next());
 
         System.out.print("Hoca Soyadı:");
-        String dershocasoyad=giris.next();
-        ders.setHocasoyadi(dershocasoyad);
+        ders.setHocasoyadi(giris.next());
 
         System.out.print("Ders Şubesi:");
-        String derssube=giris.next();
-        ders.setDerssube(derssube);
+        ders.setDerssube(giris.next());
 
         System.out.print("Ders Kredisi:");
-        String derskredi=giris.next();
-        ders.setDerskredi(derskredi);
+        ders.setDerskredi(giris.next());
 
         islemYap();
     }
 
     void dersSil(){
-        ders.setDerskodu(null);
-        ders.setDersadi(null);
-        ders.setHocaadi(null);
-        ders.setHocasoyadi(null);
-        ders.setDerssube(null);
-        ders.setDerskredi(null);
+        if (ders.getDersadi()!=null) {
+            ders.setDerskodu(null);
+            ders.setDersadi(null);
+            ders.setHocaadi(null);
+            ders.setHocasoyadi(null);
+            ders.setDerssube(null);
+            ders.setDerskredi(null);
+        }
+        else
+            System.out.println("Ders ekleyiniz..");
 
+        islemYap();
     }
 
     void dersleriGoruntule(){
 
-        System.out.print("Ders Kodu: "+ders.getDerskodu());
-        System.out.print("Ders Adı: "+ders.getDersadi());
-        System.out.print("Hoca Adı: "+ders.getHocaadi());
-        System.out.print("Hoca Soyadı: "+ders.getHocasoyadi());
-        System.out.print("Ders Şubesi: "+ders.getDerssube());
-        System.out.print("Ders Kredisi:"+ders.getDerskredi());
-
+        if(ders.getDersadi()!=null) {
+            System.out.println("Ders Kodu: " + ders.getDerskodu());
+            System.out.println("Ders Adı: " + ders.getDersadi());
+            System.out.println("Hoca Adı: " + ders.getHocaadi());
+            System.out.println("Hoca Soyadı: " + ders.getHocasoyadi());
+            System.out.println("Ders Şubesi: " + ders.getDerssube());
+            System.out.println("Ders Kredisi:" + ders.getDerskredi());
+        }
+        else
+            System.out.println("Ders ekleyiniz..");
         islemYap();
     }
 }
