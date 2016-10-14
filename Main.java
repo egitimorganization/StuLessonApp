@@ -204,15 +204,20 @@ class AdminIslemleri {
         Scanner ekle = new Scanner(System.in);
 
         System.out.print("Ad giriniz: ");
-        stu.setIsim(ekle.next());
+        String ad=ekle.next();
+                stu.setIsim(ad);
         System.out.print("Soyad giriniz: ");
-        stu.setSoyisim(ekle.next());
+        String soyad=ekle.next();
+                stu.setSoyisim(soyad);
         System.out.print("Numara giriniz: ");
-        stu.setNumara(ekle.nextInt());
+        int numara=ekle.nextInt();
+                stu.setNumara(numara);
         System.out.print("Bölüm giriniz: ");
-        stu.setBolum(ekle.next());
+        String bolum=ekle.next();
+                stu.setBolum(bolum);
         System.out.print("Sınıf giriniz: ");
-        stu.setSınıf(ekle.nextInt());
+        int sınıf=ekle.nextInt();
+                stu.setSınıf(sınıf);
 
 
         System.out.println("Ekleme basarili...\n");
@@ -236,11 +241,11 @@ class AdminIslemleri {
     void ogrenciListele() {
 
 
-        System.out.print("Öğrenci Adı: "+stu.getIsim());
-        System.out.print("Öğrenci Soyadı: "+stu.getSoyisim());
-        System.out.print("Öğrenci Numara: "+stu.getNumara());
-        System.out.print("Öğrenci Bölüm: "+stu.getBolum());
-        System.out.print("Öğrenci Sınıf: "+stu.getSınıf());
+        System.out.print("Öğrenci Adı:  "+stu.getIsim());
+        System.out.print("  Öğrenci Soyadı:  "+stu.getSoyisim());
+        System.out.print("  Öğrenci Numara:  "+stu.getNumara());
+        System.out.print("  Öğrenci Bölüm:  "+stu.getBolum());
+        System.out.print("  Öğrenci Sınıf:  "+stu.getSınıf());
 
         adminIslem();
     }
@@ -269,7 +274,7 @@ class OgrenciIslemleri {
 
         ogrenci=new Ogrenci();
 
-        if(!ogrenci.getIsim().isEmpty()) {
+       /* if(!ogrenci.getIsim().isEmpty()) {
 
             System.out.print("Öğrenci No:");
             String ogrno=giris.next();
@@ -288,7 +293,7 @@ class OgrenciIslemleri {
             System.out.println("Sistemde kayıtlı öğrenci yoktur.");
             admin=new AdminIslemleri();
             admin.sorgula();
-        }
+        }*/
     }
 
     void islemYap(){
