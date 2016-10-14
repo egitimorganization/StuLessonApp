@@ -5,20 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-
-public class Main {
-
-    public static void main(String[] args) {
-
-        AdminIslemleri admin=new AdminIslemleri();
-        admin.sorgula();
-
-    }
-
-}
-
-
- class Ogrenci{
+    class Ogrenci{
      private String isim;
     private String soyisim;
     private int numara;
@@ -65,65 +52,6 @@ public class Main {
          return sınıf;
      }
  }
-
- class Ders {
-
-
-    private String derskodu;
-    private String dersadi;
-    private String hocaadi;
-    private String hocasoyadi;
-    private String derssube;
-    private String derskredi;
-
-    public void setDerskodu(String derskodu) {
-        this.derskodu = derskodu;
-    }
-
-    public String getDerskodu() {
-        return derskodu;
-    }
-
-    public void setDersadi(String dersadi) {
-        this.dersadi = dersadi;
-    }
-
-    public String getDersadi() {
-        return dersadi;
-    }
-
-    public void setHocaadi(String hocaadi) {
-        this.hocaadi = hocaadi;
-    }
-
-    public String getHocaadi() {
-        return hocaadi;
-    }
-
-    public void setHocasoyadi(String hocasoyadi) {
-        this.hocasoyadi = hocasoyadi;
-    }
-
-    public String getHocasoyadi() {
-        return hocasoyadi;
-    }
-
-    public void setDerssube(String derssube) {
-        this.derssube = derssube;
-    }
-
-    public String getDerssube() {
-        return derssube;
-    }
-
-    public void setDerskredi(String derskredi) {
-        this.derskredi = derskredi;
-    }
-
-    public String getDerskredi() {
-        return derskredi;
-    }
-}
 
 
 class AdminIslemleri {
@@ -253,131 +181,6 @@ class AdminIslemleri {
 }
 
 
-class OgrenciBilgileri {
 
-    //ogrenci ve dersleri tutar
-    static String[][] dersler = new String[5][5];
-    //ogrenci ve numaraları tutar
-    static String[][] ogrenciler = new String[2][5];
 
-}
 
-class OgrenciIslemleri {
-
-    Scanner giris = new Scanner(System.in);
-
-    Ogrenci ogrenci;
-    AdminIslemleri admin;
-    Ders ders;
-
-    void dogrula(){
-
-        ogrenci=new Ogrenci();
-
-       /* if(!ogrenci.getIsim().isEmpty()) {
-
-            System.out.print("Öğrenci No:");
-            String ogrno=giris.next();
-            System.out.print("Adınızı Giriniz:");
-            String ad = giris.next();
-
-            if(ogrenci.getNumara().equals(ogrno) && ogrenci.getIsim().equals(ad)){
-                islemYap();
-            }
-            else {
-                System.out.println("Eşleşmeye kullanıcı adı ya da şifre..");
-                dogrula();
-            }
-        }
-        else {
-            System.out.println("Sistemde kayıtlı öğrenci yoktur.");
-            admin=new AdminIslemleri();
-            admin.sorgula();
-        }*/
-    }
-
-    void islemYap(){
-
-        System.out.println("Ders Ekle------ 1\nDers Sil------- 2\nDersleri Gör--- 3\nAna Menü------- 4");
-        System.out.print("Seçiminiz: \n");
-
-        try {
-            int secim = giris.nextInt();
-            switch (secim) {
-                case 1:
-                    dersEkle();
-                    break;
-                case 2:
-                    dersSil();
-                    break;
-                case 3:
-                    dersleriGoruntule();
-                    break;
-                case 4:
-                    admin=new AdminIslemleri();
-                    admin.sorgula();
-                    break;
-                default:
-                    System.out.println("1 ile 4 arasında sayı giriniz...\n");
-                    islemYap();
-                    break;
-            }
-        }catch (InputMismatchException i){
-            System.out.print("1 ile 4 arasında sayı giriniz...");
-            islemYap();
-        }
-    }
-
-    void dersEkle(){
-
-        ders=new Ders();
-
-        System.out.print("Ders Kodu:");
-        String derskodu=giris.next();
-        ders.setDerskodu(derskodu);
-
-        System.out.print("Ders Adı:");
-        String dersadi=giris.next();
-        ders.setDersadi(dersadi);
-
-        System.out.print("Hoca Adı:");
-        String dershocaad=giris.next();
-        ders.setHocaadi(dershocaad);
-
-        System.out.print("Hoca Soyadı:");
-        String dershocasoyad=giris.next();
-        ders.setHocasoyadi(dershocasoyad);
-
-        System.out.print("Ders Şubesi:");
-        String derssube=giris.next();
-        ders.setDerssube(derssube);
-
-        System.out.print("Ders Kredisi:");
-        String derskredi=giris.next();
-        ders.setDerskredi(derskredi);
-
-        islemYap();
-    }
-
-    void dersSil(){
-        ders.setDerskodu(null);
-        ders.setDersadi(null);
-        ders.setHocaadi(null);
-        ders.setHocasoyadi(null);
-        ders.setDerssube(null);
-        ders.setDerskredi(null);
-
-    }
-
-    void dersleriGoruntule(){
-
-        System.out.print("Ders Kodu: "+ders.getDerskodu());
-        System.out.print("Ders Adı: "+ders.getDersadi());
-        System.out.print("Hoca Adı: "+ders.getHocaadi());
-        System.out.print("Hoca Soyadı: "+ders.getHocasoyadi());
-        System.out.print("Ders Şubesi: "+ders.getDerssube());
-        System.out.print("Ders Kredisi:"+ders.getDerskredi());
-
-        islemYap();
-    }
-}
