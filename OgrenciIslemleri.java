@@ -2,17 +2,14 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
 public class OgrenciIslemleri {
 
-    Scanner giris = new Scanner(System.in);
+    void ogreciLogin(){
 
-    Ogrenci ogrenci;
-    AdminIslemleri admin;
-    Ders ders;
+        Ogrenci ogrenci=new Ogrenci();
+        Scanner giris = new Scanner(System.in);
 
-    void dogrula(){
-
-       ogrenci=new Ogrenci();
 
         if(ogrenci.getOgrenciadi()!=null) {
 
@@ -26,17 +23,18 @@ public class OgrenciIslemleri {
             }
             else {
                 System.out.println("Eşleşmeye kullanıcı adı ya da şifre..");
-                dogrula();
+                ogreciLogin();
             }
         }
         else {
             System.out.println("Sistemde kayıtlı öğrenci yoktur.");
-            admin=new AdminIslemleri();
-            admin.sorgula();
+            Main main=new Main();
+            main.loginSecim();
         }
     }
 
     void islemYap(){
+        Scanner giris = new Scanner(System.in);
 
         System.out.println("Ders Ekle------ 1\nDers Sil------- 2\nDersleri Gör--- 3\nAna Menü------- 4");
         System.out.print("Seçiminiz: \n");
@@ -54,23 +52,23 @@ public class OgrenciIslemleri {
                     dersleriGoruntule();
                     break;
                 case 4:
-                    admin=new AdminIslemleri();
-                    admin.sorgula();
+                    AdminIslemleri admin=new AdminIslemleri();
+                    admin.adminLogin();
                     break;
                 default:
                     System.out.println("1 ile 4 arasında sayı giriniz...\n");
-                    islemYap();
                     break;
             }
         }catch (InputMismatchException i){
             System.out.print("1 ile 4 arasında sayı giriniz...");
-            islemYap();
         }
+        islemYap();
     }
 
     void dersEkle(){
 
-        ders=new Ders();
+        Ders ders=new Ders();
+        Scanner giris = new Scanner(System.in);
 
         System.out.print("Ders Kodu:");
         ders.setDerskodu(giris.next());
@@ -90,10 +88,12 @@ public class OgrenciIslemleri {
         System.out.print("Ders Kredisi:");
         ders.setDerskredi(giris.next());
 
-        islemYap();
     }
 
     void dersSil(){
+
+        Ders ders=new Ders();
+
         if (ders.getDersadi()!=null) {
             ders.setDerskodu(null);
             ders.setDersadi(null);
@@ -104,11 +104,11 @@ public class OgrenciIslemleri {
         }
         else
             System.out.println("Ders ekleyiniz..");
-
-        islemYap();
     }
 
     void dersleriGoruntule(){
+
+        Ders ders=new Ders();
 
         if(ders.getDersadi()!=null) {
             System.out.println("Ders Kodu: " + ders.getDerskodu());
@@ -120,6 +120,5 @@ public class OgrenciIslemleri {
         }
         else
             System.out.println("Ders ekleyiniz..");
-        islemYap();
     }
 }

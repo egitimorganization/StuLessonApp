@@ -3,8 +3,8 @@ import lombok.Setter;
 
 public class Ders {
 
-    @Setter
     @Getter
+    @Setter
     private static String derskodu;
     @Getter
     @Setter

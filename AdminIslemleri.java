@@ -6,40 +6,17 @@ import java.util.Scanner;
  */
 public class AdminIslemleri {
 
-    Ogrenci stu =new Ogrenci();
-
-    void sorgula() {
+    void adminLogin() {
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Admin işlemleri---- 1\nÖğrenci işlemleri-- 2");
-        System.out.print("Seçiminiz: ");
 
-        try {
-            int sayi = input.nextInt();
-
-            switch (sayi){
-                case 1:
-                    System.out.print("Sifre giriniz: ");
-                    String girilen = input.next();
-                    if (girilen.equals("12345")) {
-                        adminIslem();
-                    } else {
-                        System.out.println("Şifre yanlış girildi yeniden giriniz...");
-                        sorgula();
-                    }
-                    break;
-                case 2:
-                    OgrenciIslemleri ogrenciIslemleri=new OgrenciIslemleri();
-                    ogrenciIslemleri.dogrula();
-                    break;
-                default:
-                    System.out.print("\nYalnızca 1 ve 2 yi seçebilirsiniz.\n");
-                    sorgula();
-                    break;
-            }
-        }catch (InputMismatchException ime){
-            System.out.println("\nLütfen geçerli seçim yapınız...");
-            sorgula();
+        System.out.print("Sifre giriniz: ");
+        String girilen = input.next();
+        if (girilen.equals("12345")) {
+            adminIslem();
+        } else {
+            System.out.println("Şifre yanlış girildi yeniden giriniz...");
+            adminLogin();
         }
 
     }
@@ -49,10 +26,12 @@ public class AdminIslemleri {
         Scanner islem = new Scanner(System.in);
         System.out.print("Öğrenci Ekle----- 1 " + "\n" + "Öğrenci sil------ 2" + "\n" +
                 "Öğrenci Listele-- 3" + "\n" + "Ana Menü--------- 4");
+
         System.out.print("\nSeçiminiz:");
+
         try {
             int sayi1 = islem.nextInt();
-            switch (sayi1){
+            switch (sayi1) {
                 case 1:
                     ogrenciEkle();
                     break;
@@ -63,80 +42,75 @@ public class AdminIslemleri {
                     ogrenciListele();
                     break;
                 case 4:
-                    sorgula();
+                    Main main = new Main();
+                    main.loginSecim();
                     break;
                 default:
-                    System.out.print("1 ile 4 arasında sayı giriniz.\n" );
-                    adminIslem();
+                    System.out.print("1 ile 4 arasında sayı giriniz.\n");
                     break;
             }
-        }catch (InputMismatchException i){
+        } catch (InputMismatchException i) {
             System.out.print("1 ile 4 arasında sayı giriniz.\n");
-            adminIslem();
         }
+        adminIslem();
     }
 
     void ogrenciEkle() {
 
+        Ogrenci student = new Ogrenci();
+
         Scanner ekle = new Scanner(System.in);
 
         System.out.print("Öğrenci Adı: ");
-        stu.setOgrenciadi(ekle.next());
+        student.setOgrenciadi(ekle.next());
 
         System.out.print("Öğrenci Soyad: ");
-        stu.setOgrencisoyadi(ekle.next());
+        student.setOgrencisoyadi(ekle.next());
 
         System.out.print("Öğrenci No: ");
-        stu.setOgrencino(ekle.next());
+        student.setOgrencino(ekle.next());
 
         System.out.print("Öğrencinin Bölümü: ");
-        stu.setOgrencibolum(ekle.next());
+        student.setOgrencibolum(ekle.next());
 
         System.out.print("Öğrenci Sınıfı: ");
-        stu.setOgrencisinif(ekle.next());
+        student.setOgrencisinif(ekle.next());
 
         System.out.println("Ekleme basarili...\n");
-        adminIslem();
+
     }
 
     void ogrenciSil() {
-
+        Ogrenci stu = new Ogrenci();
+        Ders ders = new Ders();
         stu.setOgrenciadi(null);
         stu.setOgrencisoyadi(null);
         stu.setOgrencino(null);
         stu.setOgrencibolum(null);
         stu.setOgrencisinif(null);
 
+        ders.setDerskredi(null);
+        ders.setDerssube(null);
+        ders.setHocasoyadi(null);
+        ders.setHocaadi(null);
+        ders.setDerskodu(null);
+
+
         System.out.println("Silme basarili...\n");
 
-        adminIslem();
     }
 
     void ogrenciListele() {
 
+        Ogrenci stu = new Ogrenci();
 
-        System.out.println("Öğrenci Adı: "+stu.getOgrenciadi());
-        System.out.println("Öğrenci Soyadı: "+stu.getOgrencisoyadi());
-        System.out.println("Öğrenci Numara: "+stu.getOgrencino());
-        System.out.println("Öğrenci Bölüm: "+stu.getOgrencibolum());
-        System.out.println("Öğrenci Sınıf: "+stu.getOgrencisinif());
+        System.out.println("Öğrenci Adı: " + stu.getOgrenciadi());
+        System.out.println("Öğrenci Soyadı: " + stu.getOgrencisoyadi());
+        System.out.println("Öğrenci Numara: " + stu.getOgrencino());
+        System.out.println("Öğrenci Bölüm: " + stu.getOgrencibolum());
+        System.out.println("Öğrenci Sınıf: " + stu.getOgrencisinif());
 
-        adminIslem();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
